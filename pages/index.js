@@ -8,6 +8,7 @@ import Span from '@/components/Span/Span'
 import Title from '@/components/Title/Title'
 import Image from 'next/image'
 import ReadMore from '@/components/ReadMore/ReadMore'
+import Concept from '@/components/Concept/Concept'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -63,24 +64,6 @@ export default function Home() {
     },
   ]
 
-  const conceptImages = [
-    {
-      src: "concept1.png",
-      width: 272,
-      height: 219
-    },
-    {
-      src: "concept2.png",
-      width: 171,
-      height: 195
-    },
-    {
-      src: "concept3.png",
-      width: 217,
-      height: 221
-    },
-  ]
-
   return (
     <>
       <Head>
@@ -93,28 +76,7 @@ export default function Home() {
 
       <Story storyRefs={storyRefs} />
 
-      <section ref={conceptRefs} className='relative h-screen bg-soft-black px-[131px] flex flex-col justify-center'>
-        <div className='relative text-center z-10'>
-          <Span text='concept' />
-          <Title text='We are convinced that substantial design must not make any compromises in the quality of materials. That is why we only use slow growing, solid materials' className='leading-[60px]' />
-          <ReadMore />
-        </div>
-
-        <div className='absolute flex w-full h-1/2'>
-          {
-            conceptImages.map((image, idx) => (
-              <div key={idx} className={`realtive w-full ${idx === 0 ? '' : (idx === 1 ? 'self-end' : 'self-center')}`}>
-                <Image 
-                  src={`/img/${image.src}`}
-                  alt={image.src}
-                  width={image.width}
-                  height={image.height}
-                />
-              </div>
-            ))
-          }
-        </div>
-      </section>
+      <Concept conceptRefs={conceptRefs} />
     </>
   )
 }
