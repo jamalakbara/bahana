@@ -1,33 +1,34 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { useState } from "react";
 
-const Navigation = () => {
-  const router = useRouter()
-  const {pathname} = router
+const Navlink = ({link, activeLink, onClick}) => {
+  return (
+    <div 
+    key={link.key} 
+      className={`${link.label === activeLink ? 'opacity-100' : 'opacity-70'} cursor-pointer text-secondary-white capitalize text-sm font-normal font-sans hover:opacity-100`} 
+      onClick={() => onClick(link)}
+    >
+      {link.label}
+    </div>
+  )
+}
 
-  const navigation_links = [
-    {
-      key: 1,
-      label: "home",
-      to: "/"
-    },
-    {
-      key: 2,
-      label: "story",
-      to: "/story"
-    },
-    {
-      key: 3,
-      label: "concept",
-      to: "/concept"
-    },
-    {
-      key: 4,
-      label: "product",
-      to: "/product"
-    },
-  ]
+const Hamburger = () => {
+  return (
+    <div className="w-9 h-9 rounded-full border-solid border-2 border-white opacity-30 cursor-pointer flex flex-col justify-evenly p-2">
+      <div className="h-[2px] bg-white"></div>
+      <div className="h-[2px] bg-white"></div>
+      <div className="h-[2px] bg-white"></div>
+    </div>
+  )
+}
+
+const Navigation = ({navigation_links, activeLink, setActiveLink}) => {
+  const handleClick = ({label, refs}) => {
+    refs.current.scrollIntoView({ behavior: 'smooth' });
+    setActiveLink(label)
+  }
 
   return (
     <nav className="fixed left-0 top-0 z-50 w-full flex items-center justify-between h-[100px] px-[131px]">
@@ -46,16 +47,12 @@ const Navigation = () => {
         <div className="flex gap-11">
           {
             navigation_links.map(link => (
-              <Link className={`${pathname === link.to ? 'opacity-100' : 'opacity-70'} text-secondary-white capitalize text-sm font-normal font-sans hover:opacity-100`} key={link.key} href={link.to}>{link.label}</Link>
+              <Navlink link={link} activeLink={activeLink} onClick={handleClick} />
             ))
           }
         </div>
 
-        <div className="w-9 h-9 rounded-full border-solid border-2 border-white opacity-30 cursor-pointer flex flex-col justify-evenly p-2">
-          <div className="h-[2px] bg-white"></div>
-          <div className="h-[2px] bg-white"></div>
-          <div className="h-[2px] bg-white"></div>
-        </div>
+        <Hamburger />
       </div>
     </nav>
   )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Span from '../Span/Span'
 
-const Carousel = () => {
+const Carousel = ({carouselRefs}) => {
   const carousels = [
     {
       background: "bg-hero.png",
@@ -37,8 +37,9 @@ const Carousel = () => {
     }, 3000);
     return () => clearInterval(timer);
   }, [index, carousels.length]);
+  
   return (
-    <section className='carousel relative h-screen bg-no-repeat bg-cover bg-center px-[131px] flex items-center bg-fixed' style={{backgroundImage: `url(/img/${carousels[index].background})`}}>
+    <section ref={carouselRefs} className='carousel relative h-screen bg-no-repeat bg-cover bg-center px-[131px] flex items-center bg-fixed' style={{backgroundImage: `url(/img/${carousels[index].background})`}}>
       <div className='relative z-10 flex flex-col gap-[117px] mt-20'>
         <div className='flex gap-x-64 h-72'>
           <div className='self-end'>

@@ -2,49 +2,117 @@ import { Inter } from '@next/font/google'
 import Navigation from '@/components/Navigation/Navigation'
 import Head from 'next/head'
 import Carousel from '@/components/Carousel/Carousel'
+import { useEffect, useRef, useState } from 'react'
+import Story from '@/components/Story/Story'
 import Span from '@/components/Span/Span'
-import Link from 'next/link'
+import Title from '@/components/Title/Title'
 import Image from 'next/image'
+import ReadMore from '@/components/ReadMore/ReadMore'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [activeLink, setActiveLink] = useState('home');
+
+  const carouselRefs = useRef(null)
+  const storyRefs = useRef(null)
+  const conceptRefs = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const carouselPosition = carouselRefs.current.getBoundingClientRect().top;
+      const storyPosition = storyRefs.current.getBoundingClientRect().top;
+      const conceptPosition = conceptRefs.current.getBoundingClientRect().top;
+      
+      if (carouselPosition <= 0) {
+        setActiveLink('home');
+      } 
+      if (storyPosition <= 0) {
+        setActiveLink('story');
+      }
+      if (conceptPosition <= 0) {
+        setActiveLink('concept');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [carouselRefs, storyRefs, conceptRefs]);
+
+  const navigation_links = [
+    {
+      key: 1,
+      label: "home",
+      refs: carouselRefs
+    },
+    {
+      key: 2,
+      label: "story",
+      refs: storyRefs
+    },
+    {
+      key: 3,
+      label: "concept",
+      refs: conceptRefs
+    },
+    {
+      key: 4,
+      label: "product",
+      refs: carouselRefs
+    },
+  ]
+
+  const conceptImages = [
+    {
+      src: "concept1.png",
+      width: 272,
+      height: 219
+    },
+    {
+      src: "concept2.png",
+      width: 171,
+      height: 195
+    },
+    {
+      src: "concept3.png",
+      width: 217,
+      height: 221
+    },
+  ]
+
   return (
     <>
       <Head>
         <title>Bahanna</title>
       </Head>
 
-      <Navigation />
+      <Navigation navigation_links={navigation_links} activeLink={activeLink} setActiveLink={setActiveLink} />
 
-      <Carousel />
+      <Carousel carouselRefs={carouselRefs} />
 
-      <section className='h-screen bg-soft-black flex gap-[30px] px-[131px]'>
-        <div className='flex-1 flex flex-col justify-center'>
-          <Span className='mb-[20px]' text='story' />
-          <h1 className='text-4xl text-white font-serif mb-[30px] mt-[20px]'>The Furniture which is actual for years and even decades</h1>
-          <p className='text-base text-soft-gray mb-[70px]'>
-            The objects by more have been designed and crafted to stay with their owners for years and even decades. They are inspired by clear ideas, surprising functions, and the timeless design of modern classics. Instead of dominating a room, our furniture creates freedom for individual configuration.
-          </p>
-          <Link className='text-base text-white font-bold capitalize' href={'/'}>read more</Link>
+      <Story storyRefs={storyRefs} />
+
+      <section ref={conceptRefs} className='relative h-screen bg-soft-black px-[131px] flex flex-col justify-center'>
+        <div className='relative text-center z-10'>
+          <Span text='concept' />
+          <Title text='We are convinced that substantial design must not make any compromises in the quality of materials. That is why we only use slow growing, solid materials' className='leading-[60px]' />
+          <ReadMore />
         </div>
-        <div className='relative flex-1'>
-          <figure>
-            <Image 
-              src='/img/story1.png'
-              alt='story 1'
-              width={473}
-              height={454}
-              className='absolute top-1/2 right-0 translate-y-[-50%]'
-            />
-            <Image 
-              src='/img/story2.png'
-              alt='story 1'
-              width={201}
-              height={274}
-              className='absolute top-1/2 right-96 translate-y-[-50%]'
-            />
-          </figure>
+
+        <div className='absolute flex w-full h-1/2'>
+          {
+            conceptImages.map((image, idx) => (
+              <div key={idx} className={`realtive w-full ${idx === 0 ? '' : (idx === 1 ? 'self-end' : 'self-center')}`}>
+                <Image 
+                  src={`/img/${image.src}`}
+                  alt={image.src}
+                  width={image.width}
+                  height={image.height}
+                />
+              </div>
+            ))
+          }
         </div>
       </section>
     </>
