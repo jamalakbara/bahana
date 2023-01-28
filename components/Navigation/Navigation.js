@@ -28,11 +28,21 @@ const Navigation = ({navigation_links, activeLink, setActiveLink}) => {
   }
 
   return (
-    <nav className="fixed left-0 top-0 z-50 w-full flex items-center justify-between h-[100px] px-[131px]">
+    <nav 
+      className="fixed left-0 top-0 z-50 w-full flex items-center justify-between h-[100px] 
+      sm:px-[40px]
+      md:px-20
+      xl:px-[10%]"
+    >
       <Logo />
 
       <div className="flex items-center gap-16">
-        <div className="flex gap-11">
+        <div 
+          className="
+          gap-11
+          sm:hidden
+          md:flex"
+        >
           {
             navigation_links.map((link,idx) => (
               <Navlink key={idx} link={link} activeLink={activeLink} onClick={handleClick} />

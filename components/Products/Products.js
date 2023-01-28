@@ -46,16 +46,41 @@ const Products = ({productsRefs}) => {
   ]
 
   return (
-    <section ref={productsRefs} className='h-screen bg-soft-black flex flex-col justify-center'>
-      <div className="px-[131px]">
+    <section 
+      ref={productsRefs} 
+      className='h-screen bg-soft-black flex flex-col justify-center'
+    >
+      <div 
+        className="
+        sm:px-[40px]
+        md:px-20
+        xl:px-[10%]"
+      >
         <Span text='products' />
-        <div className="flex items-end justify-between mb-[70px]">
-          <Title text='Inspired by clear ideas, surprising functions, and the timeless design' className='leading-[44px] mt-[14px] mb-0 max-w-2xl' />
+        
+        <div 
+          className="flex
+          justify-between mb-[70px]
+          sm:flex-col sm:items-start
+          lg:flex-row lg:items-end"
+        >
+          <Title 
+            text='Inspired by clear ideas, surprising functions, and the timeless design' 
+            className='leading-[44px] max-w-2xl
+            sm:mt-[14px] 
+            lg:mb-0' 
+          />
           <TextLink text='explore more' />
         </div>
       </div>
 
-      <div className="pl-[131px]">
+      {/* Carousel */}
+      <div 
+        className="
+        sm:pl-[40px]
+        md:pl-20
+        xl:pl-[10%]"
+      >
         <Carousel
           arrows
           className=""
@@ -92,33 +117,54 @@ const Products = ({productsRefs}) => {
         >
           {
             images.map((image,idx) => (
-              <div key={idx} className={`max-w-[${image.width}px]`}>
-                <div className="relative h-[273px]">
+              <div 
+                key={idx} 
+                className={`max-w-[${image.width}px]`}
+              >
+                {/* Image */}
+                <div 
+                  className={`relative h-[${image.height}px]`}
+                >
                   <Image 
                     src={`/img/${image.src}`}
                     alt={image.src}
                     width={image.width}
                     height={image.height}
                   />
-                  {/* <Image 
-                    src={`/img/${image.src}`}
-                    alt={image.src}
-                    fill
-                    objectFit="cover"
-                    quality={100}
-                  /> */}
                 </div>
 
-                <div className="flex gap-[46px] mt-[20px]">
-                  <p className="text-white text-base font-sans font-light">
+                {/* Information */}
+                <div 
+                  className="flex 
+                  mt-[20px]
+                  sm:gap-3
+                  md:gap-[46px]"
+                >
+                  {/* Number */}
+                  <p className="text-white font-sans font-light
+                  mt-1
+                  sm:text-sm 
+                  md:text-base">
                     {`0${idx + 1}`}
                   </p>
 
+                  {/* Title and vendor */}
                   <div>
-                    <h1 className="text-white text-2xl font-sans font-normal">
+                    {/* Title */}
+                    <h1 
+                      className="text-white font-sans font-normal
+                      sm:text-xl
+                      md:text-2xl"
+                    >
                       {image.title}
                     </h1>
-                    <span className="text-soft-gray text-base font-sans font-light capitalize">
+
+                    {/* Vendor */}
+                    <span 
+                      className="text-soft-gray font-sans font-light capitalize
+                      sm:text-sm
+                      md:text-base"
+                    >
                       {`by ${image.vendor}`}
                     </span>
                   </div>

@@ -13,6 +13,12 @@ module.exports = {
       sans: ['Founders Grotesk', 'sans'],
       serif: ['Antic Didone', 'serif'],
     },
+    screens: {
+      sm:' 375px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
     extend: {
       colors: {
         'secondary-white': '#DDDDDD',

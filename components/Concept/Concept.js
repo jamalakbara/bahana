@@ -23,14 +23,24 @@ const Concept = ({conceptRefs}) => {
   ]
   
   return (
-    <section ref={conceptRefs} className='h-screen bg-soft-black px-[131px]'>
+    <section 
+      ref={conceptRefs} 
+      className='h-screen bg-soft-black
+      sm:px-[40px]
+      md:px-20
+      xl:px-[10%]'
+    >
+      {/* Text */}
       <div className='relative h-full  flex flex-col justify-center'>
         <div className='text-center z-10'>
           <Span text='concept' />
+
           <Title text='We are convinced that substantial design must not make any compromises in the quality of materials. That is why we only use slow growing, solid materials' className='leading-[60px]' />
+
           <TextLink text='read more' />
         </div>
 
+        {/* Background Images */}
         <div className='absolute flex w-full h-3/4'>
           {
             conceptImages.map((image, idx) => (

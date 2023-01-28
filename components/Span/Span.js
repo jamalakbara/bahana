@@ -1,6 +1,10 @@
 const Span = ({text}) => {
   return (
-    <span className={`text-white text-sm opacity-30 uppercase font-sans`}>
+    <span 
+      className={`text-white opacity-30 uppercase font-sans
+      sm:text-xs
+      md:text-sm`}
+    >
       {text}
     </span>
   )

@@ -39,25 +39,85 @@ const Carousel = ({carouselRefs}) => {
   }, [index, carousels.length]);
   
   return (
-    <section ref={carouselRefs} className='carousel relative h-screen bg-no-repeat bg-cover bg-center px-[131px] flex items-center bg-fixed' style={{backgroundImage: `url(/img/${carousels[index].background})`}}>
-      <div className='relative z-10 flex flex-col gap-[117px] mt-20'>
-        <div className='flex gap-x-64 h-72'>
+    <section 
+      ref={carouselRefs} 
+      className='carousel
+        relative bg-no-repeat bg-cover bg-center bg-fixed 
+        h-screen flex items-center
+        sm:px-[40px]
+        md:px-20
+        xl:px-[10%]' 
+      style={{backgroundImage: `url(/img/${carousels[index].background})`}}
+    >
+      <div 
+        className='relative z-10 flex flex-col
+        gap-[117px] mt-20
+        sm:gap-16 sm:mt-0
+        md:gap-24'
+      >
+        <div 
+          className='flex
+          gap-x-64
+          sm:flex-col-reverse sm:h-auto sm:gap-y-6
+          md:flex-row md:gap-x-20 md:h-72'
+        >
+          {/* Carousel Description */}
           <div className='self-end'>
-            <p className='text-base text-white font-sans font-light'>{carousels[index].description}</p>
+            <p 
+              className='text-white font-sans font-light
+              sm:text-sm
+              md:text-base'
+            >
+              {carousels[index].description}
+            </p>
           </div>
-          <div className='flex flex-col gap-[30px] text-right self-start'>
-            <span className='text-sm text-white opacity-70 flex justify-end'>{`0${index + 1}`}</span>
-            <h1 className='text-[56px] leading-[72px] text-white font-serif font-normal'>{carousels[index].heading}</h1>
+
+          {/* Carousel Number and Title */}
+          <div 
+            className='flex flex-col self-start
+            gap-[30px]
+            sm:text-left sm:gap-1
+            md:text-right md:gap-4'
+          >
+            {/* Number */}
+            <span 
+              className='text-white opacity-70 flex
+              sm:text-xs sm:justify-start
+              md:text-sm md:justify-end'
+            >
+              {`0${index + 1}`}
+            </span>
+
+            {/* Title */}
+            <h1 
+              className='text-white font-serif font-normal
+              sm:text-3xl sm:leading-10
+              md:text-[56px] md:leading-[72px]'
+            >
+              {carousels[index].heading}
+            </h1>
           </div>
         </div>
 
+        {/* Carousel Button */}
         <div className='flex justify-between'>
+          {/* Information to scroll */}
           <Span text='scroll' />
 
-          <div className='flex items-center gap-[25px] cursor-pointer'>
+          {/* Button */}
+          <div 
+            className='flex items-center cursor-pointer
+            gap-[25px]'
+          >
             {
               carousels.map((carousel, idx) => (
-                <button key={idx} className={`${idx === index ? 'border-[1px] border-white' : 'bg-white opacity-30'} w-3 h-3 rounded-full`} onClick={() => handleClick(idx)}></button>
+                <button 
+                  key={idx} 
+                  className={`${idx === index ? 'border-[1px] border-white' : 'bg-white opacity-30'} rounded-full
+                  sm:w-2 sm:h-2
+                  md:w-3 md:h-3`} 
+                  onClick={() => handleClick(idx)}
+                />
               ))
             }
           </div>
