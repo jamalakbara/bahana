@@ -42,7 +42,7 @@ const Footer = ({navigation_links}) => {
 
           <div className="flex gap-11">
             {
-              navigation_links.map((link,idx) => (
+              navigation_links.filter(link => link.label !== 'home').map((link,idx) => (
                 <Navlink key={idx} link={link} onClick={handleClick} />
               ))
             }
