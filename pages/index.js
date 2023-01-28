@@ -7,8 +7,11 @@ import Story from '@/components/Story/Story'
 import Span from '@/components/Span/Span'
 import Title from '@/components/Title/Title'
 import Image from 'next/image'
-import ReadMore from '@/components/ReadMore/ReadMore'
+import ReadMore from '@/components/TextLink/TextLink'
 import Concept from '@/components/Concept/Concept'
+import Products from '@/components/Products/Products'
+import Missions from '@/components/Missions/Missions'
+import Footer from '@/components/Footer/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,12 +21,14 @@ export default function Home() {
   const carouselRefs = useRef(null)
   const storyRefs = useRef(null)
   const conceptRefs = useRef(null)
+  const productsRefs = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
       const carouselPosition = carouselRefs.current.getBoundingClientRect().top;
       const storyPosition = storyRefs.current.getBoundingClientRect().top;
       const conceptPosition = conceptRefs.current.getBoundingClientRect().top;
+      const productPosition = productsRefs.current.getBoundingClientRect().top;
       
       if (carouselPosition <= 0) {
         setActiveLink('home');
@@ -33,6 +38,9 @@ export default function Home() {
       }
       if (conceptPosition <= 0) {
         setActiveLink('concept');
+      }
+      if (productPosition <= 0) {
+        setActiveLink('products');
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -59,8 +67,8 @@ export default function Home() {
     },
     {
       key: 4,
-      label: "product",
-      refs: carouselRefs
+      label: "products",
+      refs: productsRefs
     },
   ]
 
@@ -77,6 +85,12 @@ export default function Home() {
       <Story storyRefs={storyRefs} />
 
       <Concept conceptRefs={conceptRefs} />
+
+      <Products productsRefs={productsRefs} />
+
+      <Missions />
+
+      <Footer navigation_links={navigation_links} />
     </>
   )
 }

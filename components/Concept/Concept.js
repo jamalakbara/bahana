@@ -1,5 +1,5 @@
 import Image from "next/image"
-import ReadMore from "../ReadMore/ReadMore"
+import TextLink from "../TextLink/TextLink"
 import Span from "../Span/Span"
 import Title from "../Title/Title"
 
@@ -28,7 +28,7 @@ const Concept = ({conceptRefs}) => {
         <div className='text-center z-10'>
           <Span text='concept' />
           <Title text='We are convinced that substantial design must not make any compromises in the quality of materials. That is why we only use slow growing, solid materials' className='leading-[60px]' />
-          <ReadMore />
+          <TextLink text='read more' />
         </div>
 
         <div className='absolute flex w-full h-3/4'>

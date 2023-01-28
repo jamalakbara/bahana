@@ -1,11 +1,8 @@
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react";
+import Logo from "../Logo/Logo";
 
 const Navlink = ({link, activeLink, onClick}) => {
   return (
-    <div 
-    key={link.key} 
+    <div
       className={`${link.label === activeLink ? 'opacity-100' : 'opacity-70'} cursor-pointer text-secondary-white capitalize text-sm font-normal font-sans hover:opacity-100`} 
       onClick={() => onClick(link)}
     >
@@ -32,22 +29,13 @@ const Navigation = ({navigation_links, activeLink, setActiveLink}) => {
 
   return (
     <nav className="fixed left-0 top-0 z-50 w-full flex items-center justify-between h-[100px] px-[131px]">
-      <Link href="/">
-        <figure>
-          <Image
-            src="/img/logo.png"
-            alt="Bahana Logo"
-            width={180}
-            height={39}
-          />
-        </figure>
-      </Link>
+      <Logo />
 
       <div className="flex items-center gap-16">
         <div className="flex gap-11">
           {
-            navigation_links.map(link => (
-              <Navlink link={link} activeLink={activeLink} onClick={handleClick} />
+            navigation_links.map((link,idx) => (
+              <Navlink key={idx} link={link} activeLink={activeLink} onClick={handleClick} />
             ))
           }
         </div>
