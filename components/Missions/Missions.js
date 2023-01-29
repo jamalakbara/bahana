@@ -18,7 +18,7 @@ const Missions = () => {
 
   return (
     <section 
-      className="h-screen bg-soft-black flex items-center 
+      className="h-screen bg-soft-black flex items-center overflow-hidden
       px-[131px] 
       sm:px-[40px] sm:flex-col
       md:px-20
@@ -29,7 +29,12 @@ const Missions = () => {
       <div className="flex-1 flex items-center">
           {
             images.map((image,idx) => (
-              <figure key={idx} className={`${idx === 1 ? '-ml-16': ''}`}>
+              <figure 
+                data-aos={idx === 1 ? 'fade-down': 'fade-up'}
+                data-aos-duration="1000"
+                key={idx} 
+                className={`${idx === 1 ? '-ml-16': ''}`}
+              >
                 <Image 
                   src={`/img/${image.src}`}
                   width={image.width}
@@ -42,9 +47,18 @@ const Missions = () => {
 
       {/* Text */}
       <div className='flex-1 flex flex-col justify-center'>
-        <Span className='mb-[20px]' text='missions' />
-
-        <Title text='Why we do' />
+        <div
+          data-aos='fade-left'
+        >
+          <Span className='mb-[20px]' text='missions' />
+        </div>
+        
+        <div
+          data-aos='fade-left'
+          data-aos-delay='250'
+        >
+          <Title text='Why we do' />
+        </div>
 
         <div 
           className="text-soft-gray 
@@ -52,22 +66,27 @@ const Missions = () => {
           sm:text-sm sm:mb-5
           md:text-base md:mb-[70px]"
         >
-          <p 
-            className='last:mb-0
-            mb-[30px]
-            sm:mb-3
-            md:mb-[30px]'
+          <div
+            data-aos='fade-left'
+            data-aos-delay='350'
           >
-            Between working processes, we allow the wood to rest in humidity- controlled spaces, thereby creating especially long-lasting surfaces.
-          </p>
-          <p 
-            className='last:mb-0
-            mb-[30px]
-            sm:mb-3
-            md:mb-[30px]'
-          >
-            Instead of dominating a room, our furniture creates freedom for individual configuration.
-          </p>
+            <p 
+              className='last:mb-0
+              mb-[30px]
+              sm:mb-3
+              md:mb-[30px]'
+            >
+              Between working processes, we allow the wood to rest in humidity- controlled spaces, thereby creating especially long-lasting surfaces.
+            </p>
+            <p 
+              className='last:mb-0
+              mb-[30px]
+              sm:mb-3
+              md:mb-[30px]'
+            >
+              Instead of dominating a room, our furniture creates freedom for individual configuration.
+            </p>
+          </div>
         </div>
       </div>
     </section>

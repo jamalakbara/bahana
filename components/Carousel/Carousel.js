@@ -10,18 +10,18 @@ const Carousel = ({carouselRefs}) => {
     },
     {
       background: "bg-hero.png",
-      heading: 'Timeless Design and Sustainable Quality',
-      description: 'Furniture can be beautiful, well-made, or practical. But only once we have given them meaning are they truly valuable to us'
+      heading: 'Minimize Your Space with Our Modern Storage Solutions',
+      description: 'Keep your home organized and clutter-free with our modern storage solutions. From floating shelves to modular cabinets, we have everything you need to create a sleek and minimalistic home. Browse our collection today and minimize your space.'
     },
     {
       background: "bg-hero.png",
-      heading: 'Timeless Design and Sustainable Quality',
-      description: 'Furniture can be beautiful, well-made, or practical. But only once we have given them meaning are they truly valuable to us'
+      heading: 'Add a Pop of Color to Your Living Room with Our Accent Chairs',
+      description: 'Keep your home organized and clutter-free with our modern storage solutions. From floating shelves to modular cabinets, we have everything you need to create a sleek and minimalistic home. Browse our collection today and minimize your space.'
     },
     {
       background: "bg-hero.png",
-      heading: 'Timeless Design and Sustainable Quality',
-      description: 'Furniture can be beautiful, well-made, or practical. But only once we have given them meaning are they truly valuable to us'
+      heading: 'Light Up Your Home with Our Modern Lighting Fixtures',
+      description: 'Add a touch of style to your home with our collection of modern lighting fixtures. From statement chandeliers to sleek and minimalistic designs, we have a wide range of options to suit any taste. Browse our collection today and find the perfect lighting for your space.'
     },
   ]
 
@@ -34,7 +34,7 @@ const Carousel = ({carouselRefs}) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex(index < carousels.length - 1 ? index + 1 : 0);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [index, carousels.length]);
   
@@ -50,7 +50,7 @@ const Carousel = ({carouselRefs}) => {
       style={{backgroundImage: `url(/img/${carousels[index].background})`}}
     >
       <div 
-        className='relative z-10 flex flex-col
+        className='z-10 flex flex-col
         gap-[117px] mt-20
         sm:gap-16 sm:mt-0
         md:gap-24'
@@ -59,10 +59,15 @@ const Carousel = ({carouselRefs}) => {
           className='flex
           gap-x-64
           sm:flex-col-reverse sm:h-auto sm:gap-y-6
-          md:flex-row md:gap-x-20 md:h-72'
+          lg:flex-row lg:gap-x-20
+          xl:h-80'
         >
           {/* Carousel Description */}
-          <div className='self-end'>
+          <div 
+            className='self-end'
+            data-aos='fade-right'
+            data-aos-delay='200'
+          >
             <p 
               className='text-white font-sans font-light
               sm:text-sm
@@ -77,13 +82,15 @@ const Carousel = ({carouselRefs}) => {
             className='flex flex-col self-start
             gap-[30px]
             sm:text-left sm:gap-1
-            md:text-right md:gap-4'
+            lg:text-right lg:gap-4'
           >
             {/* Number */}
             <span 
               className='text-white opacity-70 flex
               sm:text-xs sm:justify-start
-              md:text-sm md:justify-end'
+              md:text-sm 
+              lg:justify-end'
+              data-aos='fade-right'
             >
               {`0${index + 1}`}
             </span>
@@ -93,6 +100,8 @@ const Carousel = ({carouselRefs}) => {
               className='text-white font-serif font-normal
               sm:text-3xl sm:leading-10
               md:text-[56px] md:leading-[72px]'
+              data-aos='fade-right'
+              data-aos-delay='150'
             >
               {carousels[index].heading}
             </h1>
@@ -100,14 +109,25 @@ const Carousel = ({carouselRefs}) => {
         </div>
 
         {/* Carousel Button */}
-        <div className='flex justify-between'>
+        <div 
+          className='absolute flex justify-between left-0 bottom-24 w-full
+          sm:px-[40px] sm:bottom-28
+          md:px-20
+          xl:px-[10%]'
+        >
           {/* Information to scroll */}
-          <Span text='scroll' />
+          <div
+            data-aos='fade-up'
+          >
+            <Span text='scroll' />
+          </div>
 
           {/* Button */}
           <div 
             className='flex items-center cursor-pointer
             gap-[25px]'
+            data-aos='fade-up'
+            data-aos-delay='150'
           >
             {
               carousels.map((carousel, idx) => (

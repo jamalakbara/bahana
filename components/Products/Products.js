@@ -56,7 +56,11 @@ const Products = ({productsRefs}) => {
         md:px-20
         xl:px-[10%]"
       >
-        <Span text='products' />
+        <div
+          data-aos='fade-right'
+        >
+          <Span text='products' />
+        </div>
         
         <div 
           className="flex
@@ -64,13 +68,24 @@ const Products = ({productsRefs}) => {
           sm:flex-col sm:items-start
           lg:flex-row lg:items-end"
         >
-          <Title 
-            text='Inspired by clear ideas, surprising functions, and the timeless design' 
-            className='leading-[44px] max-w-2xl
-            sm:mt-[14px] 
-            lg:mb-0' 
-          />
-          <TextLink text='explore more' />
+          <div
+            data-aos='fade-right'
+            data-aos-delay='200'
+          >
+            <Title 
+              text='Inspired by clear ideas, surprising functions, and the timeless design' 
+              className='leading-[44px] max-w-2xl
+              sm:mt-[14px] 
+              lg:mb-0' 
+            />
+          </div>
+
+          <div
+            data-aos='zoom-in-up'
+            data-aos-delay='250'
+          >
+            <TextLink text='explore more' />
+          </div>
         </div>
       </div>
 

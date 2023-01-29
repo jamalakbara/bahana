@@ -4,16 +4,10 @@ import Head from 'next/head'
 import Carousel from '@/components/Carousel/Carousel'
 import { useEffect, useRef, useState } from 'react'
 import Story from '@/components/Story/Story'
-import Span from '@/components/Span/Span'
-import Title from '@/components/Title/Title'
-import Image from 'next/image'
-import ReadMore from '@/components/TextLink/TextLink'
 import Concept from '@/components/Concept/Concept'
 import Products from '@/components/Products/Products'
 import Missions from '@/components/Missions/Missions'
 import Footer from '@/components/Footer/Footer'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [activeLink, setActiveLink] = useState('home');
