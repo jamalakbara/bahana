@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Logo from "../Logo/Logo";
+import ModalLinks from "../ModalLinks/ModalLinks";
 
 const Navlink = ({link, activeLink, onClick}) => {
   return (
@@ -11,9 +13,13 @@ const Navlink = ({link, activeLink, onClick}) => {
   )
 }
 
-const Hamburger = () => {
+const Hamburger = ({visibleModal, setVisibleModal}) => {
+  const handleClick = () => {
+    setVisibleModal(!visibleModal)
+  }
+
   return (
-    <div className="w-9 h-9 rounded-full border-solid border-2 border-white opacity-30 cursor-pointer flex flex-col justify-evenly p-2">
+    <div onClick={handleClick} className="w-9 h-9 rounded-full border-solid border-2 border-white opacity-30 cursor-pointer flex flex-col justify-evenly p-2">
       <div className="h-[2px] bg-white"></div>
       <div className="h-[2px] bg-white"></div>
       <div className="h-[2px] bg-white"></div>
@@ -22,6 +28,8 @@ const Hamburger = () => {
 }
 
 const Navigation = ({navigation_links, activeLink, setActiveLink}) => {
+  const [visibleModal, setVisibleModal] = useState(false)
+
   const handleClick = ({label, refs}) => {
     refs.current.scrollIntoView({ behavior: 'smooth' });
     setActiveLink(label)
@@ -50,8 +58,11 @@ const Navigation = ({navigation_links, activeLink, setActiveLink}) => {
           }
         </div>
 
-        <Hamburger />
+        <Hamburger visibleModal={visibleModal} setVisibleModal={setVisibleModal} />
       </div>
+
+      {/* modal links */}
+      <ModalLinks visibleModal={visibleModal} setVisibleModal={setVisibleModal} navigation_links={navigation_links} activeLink={activeLink} setActiveLink={setActiveLink} />
     </nav>
   )
 }
