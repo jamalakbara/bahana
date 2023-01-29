@@ -17,31 +17,31 @@ export default function Home() {
   const conceptRefs = useRef(null)
   const productsRefs = useRef(null)
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const carouselPosition = carouselRefs.current.getBoundingClientRect().top;
-  //     const storyPosition = storyRefs.current.getBoundingClientRect().top;
-  //     const conceptPosition = conceptRefs.current.getBoundingClientRect().top;
-  //     const productPosition = productsRefs.current.getBoundingClientRect().top;
+  useEffect(() => {
+    const handleScroll = () => {
+      const carouselPosition = carouselRefs.current.getBoundingClientRect().top;
+      const storyPosition = storyRefs.current.getBoundingClientRect().top;
+      const conceptPosition = conceptRefs.current.getBoundingClientRect().top;
+      const productPosition = productsRefs.current.getBoundingClientRect().top;
       
-  //     if (carouselPosition <= 0) {
-  //       setActiveLink('home');
-  //     } 
-  //     if (storyPosition <= 0) {
-  //       setActiveLink('story');
-  //     }
-  //     if (conceptPosition <= 0) {
-  //       setActiveLink('concept');
-  //     }
-  //     if (productPosition <= 0) {
-  //       setActiveLink('products');
-  //     }
-  //   };
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [carouselRefs, storyRefs, conceptRefs]);
+      if (carouselPosition <= 0) {
+        setActiveLink('home');
+      } 
+      if (storyPosition <= 0) {
+        setActiveLink('story');
+      }
+      if (conceptPosition <= 0) {
+        setActiveLink('concept');
+      }
+      if (productPosition <= 0) {
+        setActiveLink('products');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [carouselRefs, storyRefs, conceptRefs]);
 
   const navigation_links = [
     {
