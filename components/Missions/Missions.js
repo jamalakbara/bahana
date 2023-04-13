@@ -39,6 +39,7 @@ const Missions = () => {
                   src={`/img/${image.src}`}
                   width={image.width}
                   height={image.height}
+                  alt={`${image.src}-${idx}`}
                 />
               </figure>
             ))

@@ -47,7 +47,7 @@ const ModalLinks = ({navigation_links, activeLink, setActiveLink, visibleModal, 
         <div className="text-right flex flex-col gap-[20px]">
           {
             navigation_links.map((link,idx) => (
-              <div data-aos='fade-left' data-aos-delay={idx*100}>
+              <div key={idx} data-aos='fade-left' data-aos-delay={idx*100}>
                 <Navlink key={idx} link={link} activeLink={activeLink} onClick={handleClick} />
               </div>
             ))
