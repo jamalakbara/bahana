@@ -1,17 +1,4 @@
 /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-//   crossOrigin: 'anonymous'
-// }
+const nextConfig = {}
 
-// module.exports = nextConfig
-
-const repo = 'bahana'
-const assetPrefix = `/${repo}/`
-const basePath = `/${repo}`
-
-module.exports = {
-  assetPrefix: assetPrefix,
-  basePath: basePath,
-}
-
+module.exports = nextConfig
