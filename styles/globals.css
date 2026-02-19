@@ -1,7 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-/* @import url('https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap'); */
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: 'Founders Grotesk', sans-serif;
+  --font-family-serif: 'Antic Didone', serif;
+
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 976px;
+  --breakpoint-xl: 1440px;
+
+  --color-secondary-white: #DDDDDD;
+  --color-soft-black: #131313;
+  --color-soft-gray: #898989;
+}
 
 @font-face {
   font-family: 'Founders Grotesk';

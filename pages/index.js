@@ -1,4 +1,3 @@
-import { Inter } from '@next/font/google'
 import Navigation from '@/components/Navigation/Navigation'
 import Head from 'next/head'
 import Carousel from '@/components/Carousel/Carousel'
